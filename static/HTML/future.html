@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- d3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+  
+  <!-- Leaflet JavaScript code -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <title>Sports Project</title>
+</head>
+
+<body>
+  <div class="row" style="background-color: rgb(0, 0, 0);">
+    <div class="column" style = "text-align: center; color: rgb(231, 231, 231);">
+      <h1>NBA Winners</h1>
+      <h3>A projection of NBA game winners using data from previous seasons</h3>
+      <p>Dan Dreger, Anthony Jordan, Brandon Macchi, Andrew Oceguera, Nnamdi Ezeoke, Sehajmeet Sohal</p>
+    </div>
+    <div class="column image col-lg-12" style=""></div>
+  </div> 
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid" style="margin:0rem 8rem;">
+      <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="{{ url_for('predictions') }}">WAITING FOR REVIEW</a>
+          <a class="nav-link" href="{{ url_for('analysis') }}">WAITING FOR REVIEW</a>
+          <a class="nav-link" href="{{ url_for('analysis') }}">WAITING FOR REVIEW</a>
+          <a class="nav-link" href="{{ url_for('future') }}">WAITING FOR REVIEW</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div>
+    <div class="section" style="text-align: left; margin: 20px;">
+      <h1>Game Prediction</h1>
+      <p>Use our model to predict point totals for various NBA matchups.</p>
+    </div>
+  </div>
+  <form>
+    <!-- Dropdown Menu 1 -->
+    <label for="dropdown1">Home Team:</label>
+    <select id="dropdown1" name="dropdown1">
+        <!-- Options for Dropdown 1 -->
+        <option value="BOS">Boston Celtics</option>
+        <option value="BRK">Brooklyn Nets</option>
+        <option value="TOR">Toronto Raptors</option>
+        <option value="PHI">Philadelphia 76ers</option>
+        <option value="NYK">New York Knicks</option>
+        <option value="CHI">Chicago Bulls</option>
+        <option value="CLE">Cleveland Cavaliers</option>
+        <option value="DET">Detroit Pistons</option>
+        <option value="IND">Indiana Pacers</option>
+        <option value="MIL">Milwaukee Bucks</option>
+        <option value="WAS">Washington Wizards</option>
+        <option value="ATL">Atlanta Hawks</option>
+        <option value="ORL">Orlando Magic</option>
+        <option value="MIA">Miami Heat</option>
+        <option value="CHO">Charlotte Hornets</option>
+        <option value="MIN">Minnesota Timberwolves</option>
+        <option value="OKC">Oklahoma City Thunder</option>
+        <option value="DEN">Denver Nuggets</option>
+        <option value="POR">Portland Trail Blazers</option>
+        <option value="UTA">Utah Jazz</option>
+        <option value="LAL">Los Angeles Lakers</option>
+        <option value="LAC">Los Angeles Clippers</option>
+        <option value="GSW">Golden State Warriors</option>
+        <option value="PHO">Phoenix Suns</option>
+        <option value="SAC">Sacramento Kings</option>
+        <option value="MEM">Memphis Grizzlies</option>
+        <option value="NOP">New Orleans Pelicans</option>
+        <option value="HOU">Houston Rockets</option>
+        <option value="SAS">San Antonio Spurs</option>
+        <option value="DAL">Dallas Mavericks</option>
+    </select>
+
+    <!-- Dropdown Menu 2 -->
+    <label for="dropdown2">Visiting Team:</label>
+    <select id="dropdown2" name="dropdown2">
+        <!-- Options for Dropdown 2 -->
+        <option value="BOS">Boston Celtics</option>
+        <option value="BRK">Brooklyn Nets</option>
+        <option value="TOR">Toronto Raptors</option>
+        <option value="PHI">Philadelphia 76ers</option>
+        <option value="NYK">New York Knicks</option>
+        <option value="CHI">Chicago Bulls</option>
+        <option value="CLE">Cleveland Cavaliers</option>
+        <option value="DET">Detroit Pistons</option>
+        <option value="IND">Indiana Pacers</option>
+        <option value="MIL">Milwaukee Bucks</option>
+        <option value="WAS">Washington Wizards</option>
+        <option value="ATL">Atlanta Hawks</option>
+        <option value="ORL">Orlando Magic</option>
+        <option value="MIA">Miami Heat</option>
+        <option value="CHO">Charlotte Hornets</option>
+        <option value="MIN">Minnesota Timberwolves</option>
+        <option value="OKC">Oklahoma City Thunder</option>
+        <option value="DEN">Denver Nuggets</option>
+        <option value="POR">Portland Trail Blazers</option>
+        <option value="UTA">Utah Jazz</option>
+        <option value="LAL">Los Angeles Lakers</option>
+        <option value="LAC">Los Angeles Clippers</option>
+        <option value="GSW">Golden State Warriors</option>
+        <option value="PHO">Phoenix Suns</option>
+        <option value="SAC">Sacramento Kings</option>
+        <option value="MEM">Memphis Grizzlies</option>
+        <option value="NOP">New Orleans Pelicans</option>
+        <option value="HOU">Houston Rockets</option>
+        <option value="SAS">San Antonio Spurs</option>
+        <option value="DAL">Dallas Mavericks</option>
+    </select>
+
+    <!-- Text Box for Calculated Value -->
+    <label for="result">Calculated Result:</label>
+    <input type="text" id="result" name="result" readonly>
+</form>
+
+<!-- JavaScript for Calculation -->
+<script>
+    // Get references to the dropdown menus and result text box
+    const dropdown1 = document.getElementById("dropdown1");
+    const dropdown2 = document.getElementById("dropdown2");
+    const resultTextbox = document.getElementById("result");
+
+    // Add an event listener to both dropdowns to calculate the result
+    dropdown1.addEventListener("change", calculateResult);
+    dropdown2.addEventListener("change", calculateResult);
+
+    // Function to calculate the result based on the selected options
+    function calculateResult() {
+        // Get the selected values from the dropdown menus
+        const value1 = dropdown1.value;
+        const value2 = dropdown2.value;
+
+        // Perform your calculation based on the selected values
+        // For example, let's concatenate the values
+        const calculatedResult = `${value1}: | ${value2}: `;
+
+        // Update the result textbox with the calculated value
+        resultTextbox.value = calculatedResult;
+    }
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>

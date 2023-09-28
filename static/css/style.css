@@ -1,0 +1,101 @@
+/* Custom CSS */
+.navbar-custom {
+  background-color: rgb(0, 0, 0); 
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand { /* Include .navbar-brand in the rule */
+  color: rgb(231, 231, 231); /* Set the font color to white */
+}
+
+.navbar-custom .nav-link:hover {
+  background-color: #52a3b4;
+  border-radius: 5px;
+}
+
+ul.navBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li.navItem {
+  border-right: 1px solid #bbb;
+  float: left;
+}
+
+li.navItem:last-child {
+  border-right: none;
+}
+
+li.navItem a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.navItem a:hover {
+  background-color: #111;
+}
+
+.activeNav {
+  background-color: #3b47e7;
+}
+
+body {
+  background-color: #52a3b4;
+}
+
+.image {
+  background-image: url(../../static/img/football1.jpg);
+  background-size: 100%;
+  background-position: 25%;
+  background-repeat: no-repeat;
+  height: 16vw;
+  opacity: 85%;
+  box-shadow: inset 10px 0px 5px -4px rgb(73, 155, 171);
+}
+
+.column {
+  padding: 0;
+}
+
+.row {
+  /* display: flex; */
+}
+
+.textbox {
+  width: 50%; 
+  align-content: center;
+  margin: auto;
+  margin-top: 10%;
+  position: relative;
+}
+
+.main {
+  margin: 3rem 8rem;
+}
+#superbowlInfo {
+  background-color: white;  /* White background */
+  padding: 20px;            /* Space inside the box */
+  max-width: 600px;         /* Maximum width to ensure responsiveness */
+  margin: 50px auto;        /* Vertically spaced and centered horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* subtle shadow for 3D effect */
+  border-radius: 10px;      /* Rounded corners */
+  text-align: center;       /* Center the text/items inside */
+}
+
+.superbowlWinner {  /* Each dynamically added winner will have this class */
+  border: 1px solid #e0e0e0; /* subtle border */
+  padding: 8px;     /* space inside each winner box */
+  margin: 5px 0;    /* space between winners */
+  display: inline-block; /* allows for horizontal centering inside #superbowlInfo */
+}
+
+ul.home {
+  padding-left: 40px;
+}
