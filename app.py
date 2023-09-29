@@ -99,6 +99,8 @@ def data(team1 = None, team2 = None):
     k = 1
     
     team1_score = transformAndPredict(team1_data_df, i, k)
+    i+=1
+    k-=1
     team2_score = transformAndPredict(team2_data_df, i, k)
     # conn.close()
     return json.loads(json.dumps({
