@@ -1,0 +1,35 @@
+1. In PGAdmin 4, create a database called nba_stats
+
+2. Then create a table called nba with the query tool with the following script:
+
+CREATE TABLE nba (
+	id int PRIMARY KEY,
+	Team VARCHAR(4),
+	PTS FLOAT,
+	FG FLOAT,
+	FGA FLOAT,
+	Two_PA FLOAT,
+	Three_P FLOAT,
+	Three_PA FLOAT,
+	eFG_Percentage FLOAT,
+	Home_Away VARCHAR(6),
+	ORtg FLOAT,
+	FTr FLOAT,
+	Three_PAr FLOAT,
+	TS_Percentage FLOAT,
+	FT_FGA FLOAT,
+	ORtg_opponent FLOAT,
+	FTr_opponent FLOAT,
+	Three_PAr_opponent FLOAT,
+	TS_Percentage_opponent FLOAT,
+	eFG_Percentage_opponent FLOAT,
+	FT_FGA_opponent FLOAT
+	
+
+);
+
+
+
+3. Import NBA_backend_data.csv to pgadmin table
+
+4. Might need to alter user/pass credentials in app.py according to your system
