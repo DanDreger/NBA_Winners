@@ -61,8 +61,7 @@ def transformAndPredict(df, i, k):
 
     prediction = nn_model.predict(X_train_scaled)
 
-    print(prediction)
-    return 1
+    return int(round(prediction[0][0]))
 
 
 
