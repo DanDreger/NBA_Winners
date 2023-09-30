@@ -14,7 +14,7 @@ import json
 #Hardcoded credentials for local use only
 conn = psycopg2.connect(host='localhost', database="nba_stats", user='postgres', password='postgres')
 
-columns = ['Id','Team', 'PTS', 'FG', 'FGA', '2PA', '3P', '3PA', 'eFG%', 'Home/Away',
+columns = ['Id','Team', 'PTS', 'FG', 'FGA', '2PA', '3P', '3PA', 'eFG%',
        'ORtg', 'FTr', '3PAr', 'TS%', 'FT/FGA', 'ORtg_opponent', 'FTr_opponent',
        '3PAr_opponent', 'TS%_opponent', 'eFG%_opponent', 'FT/FGA_opponent']
 #################################################
@@ -39,12 +39,11 @@ def getTeam(team: str):
 def changeTypes(df):
     return df.astype({
         'Team': "string",
-        'Home/Away': "string"
     })
 
 def transformAndPredict(df, i, k):
     y = df["PTS"]
-    X = df.drop(["Id", "Team", "PTS", "Home/Away"], axis=1)
+    X = df.drop(["Id", "Team", "PTS"], axis=1)
     X["Home/Away_Home"] = i
     X["Home/Away_Away"] = k
     print(X.head())
@@ -88,18 +87,18 @@ def data(team1 = None, team2 = None):
     #Transform to DF
     team1_data_df = pd.DataFrame(team1_data, columns=columns)
     team2_data_df = pd.DataFrame(team2_data, columns=columns)
-
     #Change from Object to String
     team1_data_df = changeTypes(team1_data_df)
     team2_data_df = changeTypes(team2_data_df)
+    print(team1_data_df)
     
     #Hardcoded home vs away
-    i = 0
-    k = 1
+    i = 1
+    k = 0
     
     team1_score = transformAndPredict(team1_data_df, i, k)
-    i+=1
-    k-=1
+    i-=1
+    k+=1
     team2_score = transformAndPredict(team2_data_df, i, k)
     # conn.close()
     return json.loads(json.dumps({
