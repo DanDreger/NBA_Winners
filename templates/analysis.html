@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- d3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+  <!-- Leaflet CSS -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/> -->
+  
+  <!-- Leaflet JavaScript code -->
+  <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script> -->
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <title>NBA Winners</title>
+</head>
+<!-- TO DO:
+add in  descriptions/images from visualsation
+change color/basic appearance
+-->
+<body>
+  <div class="row" style="background-color: rgb(0, 0, 0);">
+    <div class="column" style = "text-align: center; color: rgb(231, 231, 231);">
+      <h1>NBA Winners</h1>
+      <h5>A projection of NBA game winners using data from previous seasons</h5>
+      <p>Dan Dreger, Anthony Jordan, Brandon Macchi, Andrew Oceguera, Nnamdi Ezeoke, Sehajmeet Sohal</p>
+    </div>
+    <div class="column image col-lg-12" style=""></div>
+  </div> 
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid" style="margin:0rem 8rem;">
+      <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="{{ url_for('salaries') }}">WAITING FOR REVIEW</a>
+          <a class="nav-link" href="{{ url_for('spending_success') }}">WAITING FOR REVIEW</a>
+          <a class="nav-link" href="{{ url_for('analysis') }}">WAITING FOR REVIEW</a>
+          <a class="nav-link" href="{{ url_for('future') }}">WAITING FOR REVIEW</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div>
+    <div class="row main" style="background-color: seashell;">
+      <div class="container">
+        <div>
+          <h1>Data Analysis</h1>
+          <p>A neural network designed to predict winners of NBA games based on statistics chosen by a learning model.</p>
+        </div>
+        <div>
+          <h2>Stat 1 (Points?)</h2>
+          <p>ASSUMPTIONS ON POINTS IMPACT</p>
+          <p><b>Lets take a look:</b></p>
+        </div>
+ 
+        <div class="row">
+          <div class="col  my-auto">
+            <p><b>
+              SUMMARY OF IMPACT OF POINTS.
+            </b></p>
+          </div>
+          <div class="col">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/Highest_Paid_to_wins.png') }}" alt="VISUALIZTION 1 (POINTS)">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/fig_highest_paid_to_playoff_wins.png') }}" alt="VISUALIZTION 2 (POINTS)">
+          </div>
+          <div class="col my-auto">
+            <p><b>
+              EVIDENCE OF TRENDS ON VISUALIZTION<br><br>
+              <b> ANALYSIS OF TRENDS </b>
+            </b></p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h2>STAT 2 </h2>
+          <p>Based on stat/trend 1 we decided to look at impact of/on trend/stat 2 </p>
+          <p><b>Lets take a look:</b></p>
+          </p>
+        </div> 
+        <div class="row">
+          <div class="col my-auto">
+            <p>DESCRIPTION/INTERPRETATION OF STAT/TREND 2</p>
+            </div>
+          <div class="col">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/fig_wins_to_roster_depth.png') }}" alt="VISUALIZATION 3">
+          </div>
+        </div>
+        <div class="mt-4">
+          <h2>STAT 3</h2>
+          <p>What about STAT 3? IS IT IMPORTANT OR NOT?</p>
+          <p><b>Lets take a look:</b></p>
+          <p><b>TRENDS/INSIGHT ON STAT 3</b></p>
+          </p>
+        </div> 
+        <div class="row">
+          <div class="col col-md-6">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/fig_offense_spending_to_wins.png') }}" alt="Cap Hit For most Expensice player">
+            </div>
+          <div class="col col-md-6">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/fig_defense_spending_to_wins.png') }}" alt="Cap Hit For most Expensice player">
+          </div>
+        </div>
+        <div class="mt-4">
+          <h2>What About STAT 4/CONDITION 2(HOMECOURT ADV/REST BTW GAMES)?</h2>
+          <p>Does spending money on offense translate to wins in the playoffs?</p>
+          <p><b>Lets take a look:</b></p>
+          <p><b>One of the most surprising findings of this study is the inefficicency in defense spending come playoff time. At best there is no correlation between defensive spending and playoff wins. And it's possible that spending more money on defense may hurt a teams chances of winning addiional playoff games. Teams that invest only 20-25% of their budgets fair just as well in the playoffs as teams spending much more!</b></p>
+          </p>
+        </div> 
+        <div class="row">
+          <div class="col col-md-6">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/fig_offense_spending_to_playoff_wins.png') }}" alt="Cap Hit For most Expensice player">
+            </div>
+          <div class="col col-md-6">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/fig_defense_spending_to_playoff_wins.png') }}" alt="Cap Hit For most Expensice player">
+          </div>
+        </div>
+        <div class="mt-4">
+          <h2>Positional Spending</h2>
+          <p>Does spending by position affect a teams ability to win or lose?</p>
+          <p><b>Lets take a look:</b></p>
+          <p><b>There can be no definitive answer on "how to spend money" on a positional level with out further research. But what these charts do tell us is how teams are spending their money.</b></p>
+          <p><b>Its clear from the chart that teams are devaluing running backs, with most of those players earning the least % of the cap. Then, on a per/player basis, Receivers earn more than running backs but less than Offensive Linemen. And Quarterbacks, not surprisingly, make the most.</b></p>
+        </p>
+        </div> 
+        <div class="row">
+          <div class="col col-md-6">
+            <img class="img-fluid " src="{{ url_for('static', filename='img/wins_per_position_per_player_chart_offense.png') }}" alt="Cap Hit For most Expensice player">
+            </div>
+          <div class="col col-md-6">
+            <img class="img-fluid k" src="{{ url_for('static', filename='img/wins_per_position_per_player_chart.png') }}" alt="Cap Hit For most Expensice player">
+          </div>
+        </div>
+      </div>
+
+    </div>
+      
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>

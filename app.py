@@ -69,7 +69,7 @@ def transformAndPredict(df, i, k):
 @app.route("/")
 def home():
     return (
-        render_template('future.html')
+        render_template('home.html')
     )
 
 @app.route("/data/<team1>/<team2>")
