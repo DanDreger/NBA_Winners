@@ -30,6 +30,6 @@ CREATE TABLE nba (
 
 
 
-3. Import season_team_averages.csv to pgadmin table
+3. Import season_total_averages_v2.csv to pgadmin table
 
 4. Might need to alter user/pass credentials in app.py according to your system
