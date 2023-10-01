@@ -22,7 +22,7 @@ columns = ['Id','Team', 'PTS', 'FG', 'FGA', '2PA', '3P', '3PA', 'eFG%',
 #################################################
 app = Flask(__name__)
 
-nn_model = load_model("NBA_Model.h5")
+nn_model = load_model("NBA_Model_V2.h5")
 
 #################################################
 # Flask Routes
@@ -31,7 +31,7 @@ def getTeam(team: str):
     cur = conn.cursor()
 
     #Using Limit to test query without bloating console
-    cur.execute('SELECT * FROM nba WHERE nba.Team = %s LIMIT 1;', (team, ))
+    cur.execute('SELECT * FROM nba WHERE nba.Team = %s', (team, ))
     team_data = cur.fetchall()
     cur.close()
     return team_data
@@ -91,7 +91,7 @@ def data(team1 = None, team2 = None):
     team1_data_df = changeTypes(team1_data_df)
     team2_data_df = changeTypes(team2_data_df)
     print(team1_data_df)
-    
+    print(team2_data_df)
     #Hardcoded home vs away
     i = 1
     k = 0
