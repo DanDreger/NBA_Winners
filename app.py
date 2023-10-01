@@ -44,8 +44,8 @@ def changeTypes(df):
 def transformAndPredict(df, i, k):
     y = df["PTS"]
     X = df.drop(["Id", "Team", "PTS"], axis=1)
-    X["Home/Away_Home"] = i
     X["Home/Away_Away"] = k
+    X["Home/Away_Home"] = i
     print(X.head())
     # Create a StandardScaler instances
     scaler = StandardScaler()
