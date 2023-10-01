@@ -74,7 +74,7 @@ def home():
 
 @app.route("/data/<team1>/<team2>")
 def data(team1 = None, team2 = None):
-    if team1 == None or team2 == None:
+    if team1 == None or team2 == None or team1==team2:
         return render_template_string('Team Not Found {{ errorCode }}', errorCode='404'), 404
     
     #Get Team Data from database
