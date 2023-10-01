@@ -12,6 +12,7 @@ CREATE TABLE nba (
 	Three_P FLOAT,
 	Three_PA FLOAT,
 	eFG_Percentage FLOAT,
+	Home_Away VARCHAR(6),
 	ORtg FLOAT,
 	FTr FLOAT,
 	Three_PAr FLOAT,
